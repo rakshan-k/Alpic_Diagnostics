@@ -1,95 +1,99 @@
-/* General Styles */
 body {
-    font-family: Arial, sans-serif;
-    margin: 0;
-    padding: 0;
-    background-color: #f4f4f4;
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 20px;
+  background-color: #f5f5f5;
 }
 
 .container {
-    width: 80%;
-    margin: auto;
-    padding: 20px;
-    background: white;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    border-radius: 8px;
+  max-width: 800px;
+  margin: auto;
+  background: white;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
 }
 
-h1, h2 {
-    color: #333;
+h1 {
+  text-align: center;
+  color: #333;
 }
 
-/* Navbar */
+.company-list {
+  list-style-type: none;
+  padding: 0;
+}
+
+.company-list li {
+  margin: 10px 0;
+}
+
+.company-list a {
+  text-decoration: none;
+  font-size: 18px;
+  color: #007bff;
+  transition: 0.3s;
+}
+
+.company-list a:hover {
+  color: #0056b3;
+}
+
 .navbar {
-    background-color: #007bff;
-    padding: 15px;
-    text-align: center;
+    background-color: blue;  /* Set background color */
+    padding: 15px 20px;      /* Add some padding */
+    text-align: center;      /* Center the content */
 }
 
 .navbar ul {
-    list-style: none;
+    list-style: none;        /* Remove bullet points */
     padding: 0;
+    margin: 0;
+    display: flex;
+    justify-content: center; /* Center horizontally */
+    gap: 20px;               /* Add spacing between links */
 }
 
 .navbar ul li {
     display: inline;
-    margin: 0 15px;
 }
 
 .navbar ul li a {
-    color: white;
-    text-decoration: none;
+    text-decoration: none;   /* Remove underline */
+    color: white;            /* White text */
+    font-size: 18px;
     font-weight: bold;
+    padding: 10px 15px;
+    transition: 0.3s;
 }
 
-/* Table Styles */
+.navbar ul li a:hover {
+    background-color: darkblue; /* Darker blue on hover */
+    border-radius: 5px;
+}
+
+
 table {
-    width: 100%;
-    border-collapse: collapse;
-    margin-top: 20px;
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
 }
 
 table, th, td {
-    border: 1px solid #ddd;
+  border: 1px solid #ddd;
 }
 
 th, td {
-    padding: 10px;
-    text-align: left;
+  padding: 10px;
+  text-align: left;
 }
 
 th {
-    background-color: #007bff;
-    color: white;
+  background-color: #007bff;
+  color: white;
 }
 
-/* Search Bar */
-.search-bar {
-    margin: 20px 0;
-    display: flex;
-    gap: 10px;
-}
-
-.search-bar input {
-    padding: 8px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-}
-
-.search-bar button {
-    padding: 8px 15px;
-    background-color: #007bff;
-    color: white;
-    border: none;
-    cursor: pointer;
-}
-
-/* Footer */
-.footer {
-    text-align: center;
-    padding: 10px;
-    background: #333;
-    color: white;
-    margin-top: 20px;
+td {
+  background-color: #f9f9f9;
 }
 
