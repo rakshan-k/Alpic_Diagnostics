@@ -1,51 +1,40 @@
 import React, { useEffect, useState } from "react";
 import { supabase } from "../supabaseClient";
-import "../styles/styles.css";
+import ProductForm from "./ProductForm";
 
-const ProductList = ({ company }) => {
+const ProductList = () => {
   const [products, setProducts] = useState([]);
+  const [editingProduct, setEditingProduct] = useState(null);
+
+  const fetchProducts = async () => {
+    const { data, error } = await supabase.from("products").select("*");
+    if (error) console.error("Error fetching products:", error);
+    else setProducts(data);
+  };
+
+  const handleDelete = async (id) => {
+    const { error } = await supabase.from("products").delete().eq("id", id);
+    if (error) console.error("Error deleting product:", error);
+    else fetchProducts();
+  };
 
   useEffect(() => {
-    const fetchProducts = async () => {
-      const { data, error } = await supabase.from("products").select("*").eq("customer_name", company);
-      if (!error) setProducts(data);
-    };
-
-    if (company) fetchProducts();
-  }, [company]);
+    fetchProducts();
+  }, []);
 
   return (
     <div>
-      <h2>Products for {company}</h2>
-      <table>
-        <thead>
-          <tr>
-            <th>Serial No</th>
-            <th>Equipment Name</th>
-            <th>Model No</th>
-            <th>Serial Number</th>
-            <th>Installation Date</th>
-            <th>AMC End Date</th>
-            <th>Actions</th>
-          </tr>
-        </thead>
-        <tbody>
-          {products.map((product) => (
-            <tr key={product.serial_no}>
-              <td>{product.serial_no}</td>
-              <td>{product.equipment_name}</td>
-              <td>{product.model_no}</td>
-              <td>{product.serial_number}</td>
-              <td>{product.installation_date}</td>
-              <td>{product.amc_end_date}</td>
-              <td>
-                <button>Edit</button>
-                <button>Delete</button>
-              </td>
-            </tr>
-          ))}
-        </tbody>
-      </table>
+      <h2>Product List</h2>
+      <ProductForm product={editingProduct} onProductAdded={fetchProducts} />
+      <ul>
+        {products.map((product) => (
+          <li key={product.id}>
+            {product.equipment_name} ({product.customer_name})
+            <button onClick={() => setEditingProduct(product)}>Edit</button>
+            <button onClick={() => handleDelete(product.id)}>Delete</button>
+          </li>
+        ))}
+      </ul>
     </div>
   );
 };

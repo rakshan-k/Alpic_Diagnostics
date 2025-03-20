@@ -22,7 +22,7 @@ const App = () => {
         <Route path="/company/:companyName" element={<CompanyProducts />} />
 
         {/* Product CRUD Page */}
-        <Route path="/products" element={<ProductList company={selectedCompany} />} />
+        <Route path="/products" element={<ProductList />} />
 
         {/* Search Page */}
         <Route path="/search" element={<SearchBar setFilteredProducts={setFilteredProducts} />} />
