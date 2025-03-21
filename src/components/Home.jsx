@@ -1,22 +1,22 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import { supabase } from "../supabaseClient";
-import "../styles/styles.css";
+import { supabase } from "../config/supabaseClient"; 
+import "../styles/styles.css"; // Ensure this is imported here too
 
 const Home = () => {
   const [companies, setCompanies] = useState([]);
 
   useEffect(() => {
     const fetchCompanies = async () => {
-      const { data, error } = await supabase
-        .from("products") // Assuming 'products' table stores company names
-        .select("customer_name") // Fetch unique company names
+      let { data, error } = await supabase
+        .from("products")
+        .select("customer_name")
         .order("customer_name", { ascending: true });
 
       if (error) {
         console.error("Error fetching companies:", error);
       } else {
-        const uniqueCompanies = [...new Set(data.map((item) => item.customer_name))]; // Get unique names
+        const uniqueCompanies = [...new Set(data.map((item) => item.customer_name))];
         setCompanies(uniqueCompanies);
       }
     };
@@ -25,13 +25,14 @@ const Home = () => {
   }, []);
 
   return (
-    <div className="container">
-      <h1>Medical Portal</h1>
-      <h2>List of Companies</h2>
+    <div className="home-container">
+      <h1>Customer Names</h1>
       <ul className="company-list">
         {companies.map((company, index) => (
           <li key={index}>
-            <Link to={`/company/${encodeURIComponent(company)}`}>{company}</Link>
+            <Link to={`/company/${encodeURIComponent(company)}`} className="company-link">
+              {index + 1}. {company}
+            </Link>
           </li>
         ))}
       </ul>
