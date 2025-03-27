@@ -1,0 +1,101 @@
+/* Custom Calendar Styles */
+.custom-calendar.rbc-calendar {
+  background-color: transparent;
+  color: inherit;
+}
+
+/* Dark mode styles */
+:root[class='dark'] .custom-calendar {
+  /* Header styles */
+  & .rbc-toolbar {
+    background-color: #1f2937;
+    color: #f3f4f6;
+    border-color: #374151;
+  }
+
+  & .rbc-toolbar button {
+    color: #f3f4f6;
+    background-color: #374151;
+    border-color: #4b5563;
+  }
+
+  & .rbc-toolbar button:hover {
+    background-color: #4b5563;
+  }
+
+  & .rbc-toolbar button.rbc-active {
+    background-color: #4F46E5;
+    border-color: #4F46E5;
+  }
+
+  /* Calendar grid styles */
+  & .rbc-month-view,
+  & .rbc-time-view {
+    border-color: #374151;
+  }
+
+  & .rbc-header {
+    background-color: #1f2937;
+    color: #f3f4f6;
+    border-color: #374151;
+  }
+
+  & .rbc-day-bg {
+    background-color: #111827;
+    border-color: #374151;
+  }
+
+  & .rbc-off-range-bg {
+    background-color: #1f2937;
+  }
+
+  & .rbc-today {
+    background-color: #312e81;
+  }
+
+  /* Time grid styles */
+  & .rbc-time-header {
+    background-color: #1f2937;
+    border-color: #374151;
+  }
+
+  & .rbc-time-content {
+    border-color: #374151;
+  }
+
+  & .rbc-time-gutter {
+    background-color: #1f2937;
+  }
+
+  & .rbc-timeslot-group {
+    border-color: #374151;
+  }
+
+  /* Event styles */
+  & .rbc-event {
+    background-color: #4F46E5;
+    border-color: #4338CA;
+  }
+
+  & .rbc-event.rbc-selected {
+    background-color: #4338CA;
+  }
+
+  & .rbc-event-label {
+    color: #ffffff;
+  }
+
+  & .rbc-event-content {
+    color: #ffffff;
+  }
+
+  /* Time slots */
+  & .rbc-time-slot {
+    color: #9CA3AF;
+  }
+
+  /* Current time indicator */
+  & .rbc-current-time-indicator {
+    background-color: #EF4444;
+  }
+}
